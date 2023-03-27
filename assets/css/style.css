@@ -1,13 +1,15 @@
 * {
     margin: 10px;
 }
+
 /* Top header reading "Weather Dashboard" and it's background */
 header {
     display: flex;
     justify-content: flex-end;
     background-image: linear-gradient(red, yellow);
-    
+
 }
+
 /* Top header words "Weather Dashboard" ONLY */
 header h1 {
     margin-right: 100px;
@@ -19,13 +21,15 @@ nav {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    
+}
+
+/* The "Search for a City" words ONLY */
+nav h2 {
+    font-size: 25px;
 }
 
 /* Box under Search button that displays cities already searched as buttons */
 .city-buttons {
     border: rgb(181, 181, 181) 1px;
     border-style: solid;
-    width: 25%;
-    margin-left: 0px;
 }

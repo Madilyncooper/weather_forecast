@@ -21,15 +21,21 @@ nav {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    margin-left: -30px;
 }
 
 /* The "Search for a City" words ONLY */
-nav h2 {
-    font-size: 25px;
+.form-label {
+    font-size: 20px; 
+    
 }
 
 /* Box under Search button that displays cities already searched as buttons */
 .city-buttons {
     border: rgb(181, 181, 181) 1px;
     border-style: solid;
+}
+
+.row {
+    margin-left: 0;
 }

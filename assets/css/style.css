@@ -31,11 +31,12 @@ nav {
 }
 
 /* Box under Search button that displays cities already searched as buttons */
-.city-buttons {
+#city-buttons {
     border: rgb(181, 181, 181) 1px;
     border-style: solid;
+    margin-left: 10%;
 }
 
-.row {
-    margin-left: 0;
+#section-content {
+    margin-left: 28%;
 }

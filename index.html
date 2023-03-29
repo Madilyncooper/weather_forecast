@@ -1,3 +1,7 @@
+<!--TODO: Add break points through bootstrap -->
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -16,69 +20,63 @@
   </header>
 
   <main class="container">
-    <div class="row">
 
-      <nav class="col">
-        <form id ="city-name-input">
+    <div class="row" id="first-row-main">
+
+      <nav class="col-3">
+        <form id="city-name-input">
           <div class="mb-3 w-100">
             <label for="cityInput" class="form-label">Search for a City:</label>
             <input type="text" class="form-control mb-2" id="cityInput" required="true">
-          <button type="submit" class="btn btn-primary btn-sm w-100">Search</button>
-        </form> 
-        <div class="city-buttons"></div>
+            <button type="submit" class="btn btn-primary btn-sm w-100">Search</button>
+          </div>
+        </form>
+        <div id="city-buttons"></div>
       </nav>
 
-      <div class="col-6 w-75">
-        <article class="card">
-          <h3 class="card-title fw-bold ">Redondo Beach</h3>
-          <h6 id="currentDay" class="card-subtitle mb-2 text-body-secondary fw-bold fs-6 text"></h6>
-          <p class="temp card-text"></p>
-          <p class="wind card-text"></p>
-          <p class="humidity card-text"></p>
-          <p class="temp card-text"></p>
-          <p class="wind card-text"></p>
-          <p class="humidity card-text"></p>
-        </article>
+      <article class="card col-3 w-75" id="current-city-weather"></article>
+      
+    </div>
 
-        <div class="row">
-          <h4 class="fw-bold">5-Day Forecast:</h4>
-          <!-- Add break points through bootstrap -->
-          <!-- Add required tag to submit form -->
+  </main>
 
-          <div class="col-3 p-2 card text-white bg-secondary" style="width: 9em;">
-            <h5 id="plus-one" class="card-title fs-6 fw-bold"></h5>
-          </div>
+  <section class="container" id="section-content">
 
-          <div class="col-3 p-2  card" style="width: 9em;">
-            <h5 id="plus-two" class="card-title fs-6 fw-bold"></h5>
-          </div>
+    <div class="row">
 
-          <div class="col-3 p-2 card" style="width: 9em;">
-            <h5 id="plus-three" class="card-title fw-bold fs-6"></h5>
-          </div>
+      <h4 class="col fw-bold">5-Day Forecast:</h4>
 
-          <div class="col-3 p-2 card" style="width: 9em;">
-            <h5 id="plus-four" class="card-title fw-bold fs-6"></h5>
-          </div>
+    </div>
 
-          <div class="col-3 p-2 card" style="width: 9em;">
-            <h5 id="plus-five" class="card-title fs-6 fw-bold"></h5>
-          </div>
+    <div class="row">
 
-        </div>
+      <div class="col-3 p-2 card text-white bg-secondary" style="width: 9em;">
+        <h5 id="plus-one" class="card-title fs-6 fw-bold"></h5>
+      </div>
 
+      <div class="col-3 p-2  card" style="width: 9em;">
+        <h5 id="plus-two" class="card-title fs-6 fw-bold"></h5>
+      </div>
+
+      <div class="col-3 p-2 card" style="width: 9em;">
+        <h5 id="plus-three" class="card-title fw-bold fs-6"></h5>
+      </div>
+
+      <div class="col-3 p-2 card" style="width: 9em;">
+        <h5 id="plus-four" class="card-title fw-bold fs-6"></h5>
+      </div>
+
+      <div class="col-3 p-2 card" style="width: 9em;">
+        <h5 id="plus-five" class="card-title fs-6 fw-bold"></h5>
       </div>
 
     </div>
-    </div>
-  </main>
 
 
 
 
 
-
-
+  </section>
 
 
 

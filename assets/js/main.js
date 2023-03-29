@@ -7,7 +7,7 @@ var firstRowMainEl = document.querySelector('#first-row-main')
 var sectionEl = document.querySelector('section');
 var currentCityArticle = document.querySelector('#current-city-weather');
 
-// TODO: Put in Images and line breaks for main block
+// TODO: Line breaks for main block
 // TODO: Add weather for city cards
 // TODO: Local Storage adds
 // TODO: README. and Deploy
@@ -28,12 +28,17 @@ function citySubmission(event) {
 
             currentCityArticle.innerHTML = '';
 
+            var iconImageEl = document.createElement('img');
+            var icon = data.weather[0].icon
+            iconImg = `https://openweathermap.org/img/wn/${icon}.png`
+            iconImageEl.setAttribute('src', iconImg);           
+
             var currentCityHeader = document.createElement('h3');
             currentCityHeader.classList.add('card-title', 'fw-bold');
             currentCityHeader.textContent = data.name;
 
             var currentCitySubtitle = document.createElement('h6');
-            currentCitySubtitle.classList.add('card-subtitle', 'mb-2', 'text-body-secondary', 'fw-bold', 'fs-6');
+            currentCitySubtitle.classList.add('card-subtitle', 'mb-3', 'text-body-secondary', 'fw-bold', 'fs-6');
             currentCitySubtitle.setAttribute('id', 'currentDay');
 
             var currentCityPara = document.createElement('p');
@@ -41,16 +46,15 @@ function citySubmission(event) {
             currentCityPara.textContent += `Wind: ${data.wind.speed} MPH `;
             currentCityPara.textContent += `Humidity ${data.main.humidity}%`;
 
-
+            currentCityHeader.appendChild(iconImageEl);
             currentCityArticle.appendChild(currentCityHeader);
             currentCityArticle.appendChild(currentCitySubtitle);
             currentCityArticle.appendChild(currentCityPara);
             firstRowMainEl.appendChild(currentCityArticle);
             mainEl.appendChild(firstRowMainEl);
 
-        
 
-
+    
 
 
 

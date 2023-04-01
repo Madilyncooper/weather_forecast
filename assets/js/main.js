@@ -4,34 +4,34 @@ var cityFormEl = document.querySelector('#city-name-input')
 var cityInputEl = document.querySelector('#cityInput');
 var mainEl = document.querySelector('main');
 var firstRowMainEl = document.querySelector('#first-row-main')
-var sectionEl = document.querySelector('section');
+var FiveDayForecastEl = document.querySelector('#five-day-forecast-row');
 var currentCityArticle = document.querySelector('#current-city-weather');
 
-// TODO: Line breaks for main block
-// TODO: Add weather for city cards
+
 // TODO: Local Storage adds
 // TODO: README. and Deploy
+//TODO: Take out console.log(data)
+//TODO: event listener for buttons history cities
 
 function citySubmission(event) {
     event.preventDefault();
 
     var cityInputValue = cityInputEl.value;
-    var apiOpenWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${openWeatherKey}&q=${cityInputValue}&units=imperial`
-    console.log(apiOpenWeatherUrl);
-   
+    var apiOpenWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${openWeatherKey}&q=${cityInputValue}&units=imperial`;
+
     fetch(apiOpenWeatherUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
 
             currentCityArticle.innerHTML = '';
+            FiveDayForecastEl.innerHTML = '';
 
             var iconImageEl = document.createElement('img');
             var icon = data.weather[0].icon
-            iconImg = `https://openweathermap.org/img/wn/${icon}.png`
-            iconImageEl.setAttribute('src', iconImg);           
+            var iconImg = `https://openweathermap.org/img/wn/${icon}.png`
+            iconImageEl.setAttribute('src', iconImg);
 
             var currentCityHeader = document.createElement('h3');
             currentCityHeader.classList.add('card-title', 'fw-bold');
@@ -45,6 +45,8 @@ function citySubmission(event) {
             currentCityPara.textContent = `Temp: ${data.main.temp} `;
             currentCityPara.textContent += `Wind: ${data.wind.speed} MPH `;
             currentCityPara.textContent += `Humidity ${data.main.humidity}%`;
+            currentCityPara.setAttribute('class', 'text-wrap');
+            currentCityPara.setAttribute('style', 'width: 8em;');
 
             currentCityHeader.appendChild(iconImageEl);
             currentCityArticle.appendChild(currentCityHeader);
@@ -53,37 +55,76 @@ function citySubmission(event) {
             firstRowMainEl.appendChild(currentCityArticle);
             mainEl.appendChild(firstRowMainEl);
 
+            var cityLat = data.coord.lat;
+            var cityLon = data.coord.lon;
+            var fiveDayForecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${cityLat}&lon=${cityLon}&units=imperial&appid=${openWeatherKey}`;
 
-    
+
+            fetch(fiveDayForecastApiUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+
+                    var fiveDayInfoArr = [];
+
+                    for (var x = 0; x < data.list.length; x++) {
+                        if (x % 8 === 0) {
+                            var forecastIndex = data.list[x];
+                            fiveDayInfoArr.push(forecastIndex);
+                        }
+                    }
 
 
+                    function updateFiveDayTime() {
+                        var todaysTime = dayjs();
+                        var plusOne = todaysTime.add((i + 1), 'day');
+                        document.querySelector(`#plus-${[i]}`).textContent = plusOne.format('MM/DD/YYYY');
+
+                        var cardHeaderIds = document.querySelector(`#plus-${[i]}`);
+                        var fiveDayIconEl = document.createElement('img');
+                        var iconFD = (fiveDayInfoArr[i]).weather[0].icon;
+                        var iconFDUrl = `https://openweathermap.org/img/wn/${iconFD}.png`
+                        fiveDayIconEl.setAttribute('src', iconFDUrl);
+
+                        var divOneParaEl = document.createElement('p');
+                        divOneParaEl.textContent = `Temp: ${(fiveDayInfoArr[i]).main.temp} `;
+                        divOneParaEl.textContent += `Wind: ${(fiveDayInfoArr[i]).wind.speed} MPH `;
+                        divOneParaEl.textContent += `Humidity: ${(fiveDayInfoArr[i]).main.humidity} %`;
+                        divOneParaEl.setAttribute('class', 'text-wrap');
+                        divOneParaEl.setAttribute('style', 'width: 8rem;');
+
+                        cardHeaderIds.appendChild(fiveDayIconEl);
+                        cardHeaderIds.appendChild(divOneParaEl);
+                    }
 
 
-            function updateTime() {
+                    function fiveDayCardsDate() {
+                        var fiveDayDivOneEl = document.createElement('div');
+                        fiveDayDivOneEl.classList.add('col-3', 'p-2', 'card', 'text-white', 'bg-secondary');
+                        fiveDayDivOneEl.setAttribute('style', 'width: 10em;');
+
+                        var divOneHeaderEl = document.createElement('h5');
+                        divOneHeaderEl.classList.add('card-title', 'fs-6', 'fw-bold');
+                        divOneHeaderEl.setAttribute('id', `plus-${[i]}`);
+
+                        fiveDayDivOneEl.appendChild(divOneHeaderEl);
+                        FiveDayForecastEl.appendChild(fiveDayDivOneEl);
+                    };
+
+                    for (var i = 0; i < 5; i++) {
+                        fiveDayCardsDate([i]);
+                        updateFiveDayTime([i]);
+                    };
+                });
+
+
+            function updateCurrentTime() {
                 var todaysTime = dayjs();
                 document.querySelector('#currentDay').textContent = todaysTime.format('ddd, MM/DD/YYYY');
-
-                var plusOne = todaysTime.add(1, 'day');
-                document.querySelector('#plus-one').textContent = plusOne.format('MM/DD/YYYY')
-
-                var plusTwo = todaysTime.add(2, 'day');
-                document.querySelector('#plus-two').textContent = plusTwo.format('MM/DD/YYYY')
-
-                var plusThree = todaysTime.add(3, 'day');
-                document.querySelector('#plus-three').textContent = plusThree.format('MM/DD/YYYY')
-
-                var plusFour = todaysTime.add(4, 'day');
-                document.querySelector('#plus-four').textContent = plusFour.format('MM/DD/YYYY')
-
-                var plusFive = todaysTime.add(5, 'day');
-                document.querySelector('#plus-five').textContent = plusFive.format('MM/DD/YYYY')
             }
-
-            updateTime();
-
-
+            updateCurrentTime();
         });
-
 }
 
 cityFormEl.addEventListener('submit', citySubmission);
@@ -92,17 +133,6 @@ cityFormEl.addEventListener('submit', citySubmission);
 
 
 // `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`
-
-
-
-
-
-
-
-
-
-
-
 
 
 

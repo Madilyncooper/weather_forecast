@@ -8,11 +8,12 @@ header {
     justify-content: flex-end;
     background-image: linear-gradient(red, yellow);
 
+
 }
 
 /* Top header words "Weather Dashboard" ONLY */
 header h1 {
-    margin-right: 100px;
+    margin-right: 50px;
     color: white;
 }
 
@@ -39,4 +40,13 @@ nav {
 
 #section-content {
     margin-left: 28%;
+}
+
+#five-day-forecast-container {
+margin-left: 25%;
+}
+
+p {
+    font-size: 15px;
+    line-height: 30px;
 }

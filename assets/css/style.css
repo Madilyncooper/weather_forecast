@@ -7,8 +7,6 @@ header {
     display: flex;
     justify-content: flex-end;
     background-image: linear-gradient(red, yellow);
-
-
 }
 
 /* Top header words "Weather Dashboard" ONLY */
@@ -27,26 +25,51 @@ nav {
 
 /* The "Search for a City" words ONLY */
 .form-label {
-    font-size: 20px; 
-    
+    font-size: 20px;
 }
 
-/* Box under Search button that displays cities already searched as buttons */
-#city-buttons {
-    border: rgb(181, 181, 181) 1px;
+/* Line dividing Search button and search history city buttons */
+#line-divide {
+    border-top: rgb(181, 181, 181) 1px;
     border-style: solid;
     margin-left: 10%;
 }
 
+/* 5 day forecast header and rendered cards */
 #section-content {
     margin-left: 28%;
 }
 
+/* 5 day forecast cards ONLY */
 #five-day-forecast-container {
-margin-left: 25%;
+    margin-left: 25%;
 }
 
+/* Top Card displaying today's weather */
+#current-city-weather {
+    height: 300px;
+}
+
+/* Temp, wind, speed text for whole page */
 p {
     font-size: 15px;
     line-height: 30px;
+}
+
+/* Search history buttons */
+#button-style {
+    background-color: #1a6efe;
+    color: white;
+    width: 100%;
+    height: 32px;
+    padding: 2px;
+    margin-left: 10px;
+    border-radius: 0.25rem;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+/* Search history buttons */
+#button-style:hover {
+    background-color: #0053e3;
 }

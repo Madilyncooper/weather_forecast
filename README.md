@@ -32,7 +32,7 @@ $ git clone <paste the copied link>
 ```
 ## Deploy:
 
-https://madilyncooper.github.io/weather_forecast/ 
+https://madilyncooper.github.io/weather_forecast/
 
  ## Screenshot:
  

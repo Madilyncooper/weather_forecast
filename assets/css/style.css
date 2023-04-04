@@ -20,7 +20,8 @@ nav {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-left: -30px;
+    margin-left: -50px;
+    margin-right: 0%;
 }
 
 /* The "Search for a City" words ONLY */
@@ -35,14 +36,10 @@ nav {
     margin-left: 10%;
 }
 
-/* 5 day forecast header and rendered cards */
-#section-content {
-    margin-left: 28%;
-}
 
-/* 5 day forecast cards ONLY */
-#five-day-forecast-container {
-    margin-left: 25%;
+/* 5 day forecast header AND cards */
+#five-day-forecast-container { 
+    margin-left: 26%;
 }
 
 /* Top Card displaying today's weather */
